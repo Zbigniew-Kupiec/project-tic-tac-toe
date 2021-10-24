@@ -149,7 +149,44 @@ public class Game {
      * @return String indicating the outcome of the game: "X wins" or "O wins" or "Tie" or "None"
      */
 
-    
+    public String checkGameWinner(char [][]grid) {
+        String result = "None";
+        //Student code goes here ...
+        for (int i = 0; i < 3; i++) {
+            if ((grid[i][0] == 'x' && grid[i][1] == 'x' && grid[i][2] == 'x') ||
+                    (grid[0][0] == 'x' && grid[1][1] == 'x' &&grid[2][2] == 'x')) {
+                result = "X WINNER";
+                break;
+            } else if ((grid[i][0] == 'o' && grid[i][1] == 'o' && grid[i][2] == 'o') ||
+                    (grid[0][0] == 'o' && grid[1][1] == 'o' &&grid[2][2] == 'o')) {
+                result = "O WINNER";
+                break;
+            }
+            else if ((grid[i][0] == 'x' && grid[i][1] == 'x' && grid[i][2] == 'x') ||
+                    (grid[0][2] == 'x' && grid[1][1] == 'x' &&grid[2][0] == 'x')) {
+                result = "X WINNER";
+                break;
+            }
+            else if ((grid[i][0] == 'o' && grid[i][1] == 'o' && grid[i][2] == 'o') ||
+                    (grid[0][2] == 'o' && grid[1][1] == 'o' &&grid[2][0] == 'o')) {
+                result = "O WINNER";
+                break;
+            }
+        }
+        for (int j = 0; j < 3; j++) {
+            if (grid[0][j] == 'x' && grid[1][j] == 'x' && grid[2][j] == 'x') {
+                result = "X WINNER";
+                break;
+            } else if (grid[0][j] == 'o' && grid[1][j] == 'o' && grid[2][j] == 'o') {
+                result = "O WINNER";
+                break;
+            }
+        }
+        if (freeSpots == 0)
+            result = "TIE";
+
+        return result;
+    }
 
     /**
      * Main function
